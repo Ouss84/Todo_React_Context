@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useReducer } from "react";
 
-const intialState = {
+const initialState = {
   notes: [
     {
       id: 1,
@@ -25,10 +25,25 @@ const intialState = {
 
 export const NotesContext = React.createContext();
 
+const reducer = (state, action) => {
+  if (action.type === "ADD_NOTE") {
+    console.log("task added");
+  }
+  return state;
+};
+
 export const Provider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const addToDoItem = () => {
+    dispatch({
+      type: "ADD_NOTE",
+    });
+  };
+  const value = {
+    notes: state.notes,
+    addToDoItem: addToDoItem,
+  };
   return (
-    <NotesContext.Provider value={intialState}>
-      {children}
-    </NotesContext.Provider>
+    <NotesContext.Provider value={value}>{children}</NotesContext.Provider>
   );
 };

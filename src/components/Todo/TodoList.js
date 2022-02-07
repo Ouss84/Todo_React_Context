@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 
-import { NoteContext, NotesContext } from "../store/todoStore";
+import { NotesContext } from "../store/todoStore";
 import classes from "./TodoList.module.css";
 
 const TodoList = () => {
