@@ -9,7 +9,7 @@ const TodoList = () => {
       <h1>Notes:</h1>
       {notes.map((note) => {
         return (
-          <div className={classes.todo}>
+          <div className={classes.todo} key={note.id}>
             <h2>
               {note.id}. {note.title}
             </h2>
