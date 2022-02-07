@@ -1,13 +1,16 @@
 import React from "react";
+import { useContext } from "react";
 
-import { notes } from "../../notes";
+import { NoteContext, NotesContext } from "../store/todoStore";
 import classes from "./TodoList.module.css";
 
 const TodoList = () => {
+  const context = useContext(NotesContext);
+  console.log(context);
   return (
     <div className={classes.todos}>
       <h1>Notes:</h1>
-      {notes.map((note) => {
+      {context.notes.map((note) => {
         return (
           <div className={classes.todo} key={note.id}>
             <h2>

@@ -22,3 +22,13 @@ const intialState = {
     },
   ],
 };
+
+export const NotesContext = React.createContext();
+
+export const Provider = ({ children }) => {
+  return (
+    <NotesContext.Provider value={intialState}>
+      {children}
+    </NotesContext.Provider>
+  );
+};
