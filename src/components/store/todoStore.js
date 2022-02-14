@@ -45,7 +45,13 @@ const reducer = (state, action) => {
       const shortnedList = state.notes.filter((item) => item.id !== action.id);
 
       return { ...state, notes: shortnedList };
-
+    case "DONE_NOTE":
+      const taskDone = state.notes.map((item) => {
+        return item.id === action.id
+          ? { ...item, done: !item.done }
+          : { ...item };
+      });
+      return { ...state, notes: taskDone };
     default:
       return state;
   }
@@ -65,10 +71,17 @@ export const Provider = ({ children }) => {
       id: id,
     });
   };
+  const toggleDoneNote = (id) => {
+    dispatch({
+      type: "DONE_NOTE",
+      id: id,
+    });
+  };
   const value = {
     notes: state.notes,
     addToDoItem: addToDoItem,
     removeTodo: removeTodo,
+    toggleDoneNote: toggleDoneNote,
   };
   return (
     <NotesContext.Provider value={value}>{children}</NotesContext.Provider>

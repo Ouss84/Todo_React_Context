@@ -11,6 +11,10 @@ const TodoList = () => {
 
     ctx.removeTodo(id);
   };
+  const toggleHandler = (id) => {
+    ctx.toggleDoneNote(id);
+    // console.log(ctx.notes);
+  };
   // console.log(ctx);
   return (
     <div className={classes.todos}>
@@ -18,14 +22,22 @@ const TodoList = () => {
       {ctx.notes.map((note) => {
         return (
           <div
-            className={classes.todo}
+            className={`${classes.todo} ${note.done ? classes.taskDone : ""}`}
             key={note.id}
-            onClick={() => removeHandler(note.id)}
+            onClick={() => toggleHandler(note.id)}
           >
-            <h2>
-              {note.id}. {note.title}
-            </h2>
-            <p>{note.task}</p>
+            <div className="todo-details">
+              <h2>
+                {note.id}. {note.title}
+              </h2>
+              <p>{note.task}</p>
+            </div>
+            <span
+              className={`material-icons ${classes.delete}`}
+              onClick={() => removeHandler(note.id)}
+            >
+              delete
+            </span>
           </div>
         );
       })}

@@ -14,4 +14,17 @@
   margin: 0.5rem 0;
   padding: 0.5rem;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+.taskDone {
+  color: red;
+  text-decoration: line-through;
+}
+.delete {
+  margin-left: 5rem;
+  cursor: pointer;
+}
+.delete:hover {
+  color: red;
 }
