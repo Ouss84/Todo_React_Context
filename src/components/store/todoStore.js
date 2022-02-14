@@ -52,6 +52,13 @@ const reducer = (state, action) => {
           : { ...item };
       });
       return { ...state, notes: taskDone };
+    case "CHANGING_TITLE":
+      const taskToggled = state.notes.map((item) => {
+        return item.done === true
+          ? { ...item, title: item.title + " done" }
+          : { ...item };
+      });
+      return { ...state, notes: taskToggled };
     default:
       return state;
   }
@@ -77,11 +84,17 @@ export const Provider = ({ children }) => {
       id: id,
     });
   };
+  const changeTitle = (done) => {
+    dispatch({
+      type: "",
+    });
+  };
   const value = {
     notes: state.notes,
     addToDoItem: addToDoItem,
     removeTodo: removeTodo,
     toggleDoneNote: toggleDoneNote,
+    changeTitle: changeTitle,
   };
   return (
     <NotesContext.Provider value={value}>{children}</NotesContext.Provider>
