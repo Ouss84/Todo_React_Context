@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI/CD
+
+# Controls when the workflow will run
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script
+        run: echo "CI/CD ToDO"
+
+      #- name: Simulate an error
+      #  run: echo "About to fail"; exit 1
+
+      #- name: Another greeting
+      #  run: echo "Hello, CI/CD again!"

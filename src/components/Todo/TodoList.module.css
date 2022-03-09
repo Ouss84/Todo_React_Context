@@ -21,6 +21,10 @@
   color: red;
   text-decoration: line-through;
 }
+.taskDone span {
+  color: red;
+  text-decoration: none;
+}
 .delete {
   margin-left: 5rem;
   cursor: pointer;

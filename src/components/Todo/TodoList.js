@@ -6,7 +6,11 @@ import classes from "./TodoList.module.css";
 
 const TodoList = () => {
   const [searchInput, setSearchInput] = useState("");
-
+  // const [filtered, setFiltered] = useState("all");
+  // const extractTask = (option) => {
+  //   setFiltered(option);
+  //   // console.log(filtered);
+  // };
   const searchInputHandler = (event) => {
     setSearchInput(event.target.value);
     // console.log(searchInput);
@@ -29,13 +33,21 @@ const TodoList = () => {
   const tasksFiltered = ctx.notes.filter((item) => {
     return item.title.toLowerCase().includes(searchInput.toLowerCase());
   });
+  // const displayFilteredTasks = ctx.notes.filter((item) => {
+  //   return item.done === filtered;
+  // });
   // console.log(tasksFiltered);
   return (
     <div className={classes.todos}>
       <h1>Notes:</h1>
       <label> Search task:</label>
       <input type="text" onChange={searchInputHandler} />
-      {/* {console.log(seachInput)} */}
+      <label>choose:</label>
+      <select>
+        <option value="all">All</option>
+        <option value="done">Done</option>
+        <option value="not-done">Not done</option>
+      </select>
 
       {tasksFiltered.map((note) => {
         return (
